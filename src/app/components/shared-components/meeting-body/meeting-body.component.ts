@@ -17,6 +17,8 @@ import initLayoutContainer from 'opentok-layout-js';
 })
 
 export class MeetingBodyComponent {
+  audioFlag = true;
+  videoFlag = false;
   layout: any;
   remote: any;
   roomId: any;
@@ -51,7 +53,7 @@ export class MeetingBodyComponent {
     this.rtcLibService.leaveRoom(this.rtcLibService.room);
   }
 
-  constructor(private rtcLibService: RTCLibService, private activatedRoute: ActivatedRoute) {
+  constructor(private rtcLibService: RTCLibService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.remote = this.rtcLibService.remoteCalls;
 
   }
@@ -142,6 +144,21 @@ export class MeetingBodyComponent {
         }
       }
     });
+  }
+
+  endCall() {
+    this.rtcLibService.closeStream();
+    this.rtcLibService.leaveRoom(this.rtcLibService.room);
+    this.router.navigate([''])
+  }
+
+  async toggleLocalAudio() {
+    this.audioFlag = !this.audioFlag;
+    this.rtcLibService.setAudio(this.audioFlag);
+  }
+  async toggleLocalVideo() {
+    this.videoFlag = !this.videoFlag;
+    this.rtcLibService.setVideo(this.videoFlag);
   }
 }
 

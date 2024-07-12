@@ -37,8 +37,57 @@
         bottom: 0;
 
         .username {
-            padding: 5px 20px;
+            padding: 10px 20px;
+            text-transform: uppercase;
         }
     }
+
+    .call-footer {
+        display: flex;
+        width: 100%;
+        position: fixed;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        align-items: center;
+        justify-content: center;
+
+        .footer-btn-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+
+            button {
+                border: 0.5px solid white;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: transparent;
+                border-radius: 50px;
+                cursor: pointer;
+            }
+
+            .end-call {
+                background: #F76767 !important;
+                width: 132px !important;
+                height: 50px !important;
+                border-radius: 10px !important;
+                border: 0;
+                margin-left: 30px;
+
+                .leave {
+                    margin-left: 15px;
+                    color: white;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                }
+            }
+
+        }
+    }
+
 
 }

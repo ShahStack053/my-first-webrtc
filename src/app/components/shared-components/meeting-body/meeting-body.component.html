@@ -14,21 +14,21 @@
     </div>
     <div class="call-footer">
         <div class="footer-btn-main">
-            <button mat-icon-button matTooltip="Audio" matTooltip="Mute">
+            <button mat-icon-button matTooltip="Audio" *ngIf="audioFlag" (click)="toggleLocalAudio()" matTooltip="Mute">
                 <img src="../../../assets/images/microphone.svg" width="26" height="26" alt="microphone icon missing" />
             </button>
-            <button mat-icon-button matTooltip="Unmute">
+            <button mat-icon-button matTooltip="Unmute" *ngIf="!audioFlag" (click)="toggleLocalAudio()">
                 <img src="../../../assets/images/mute.svg" width="26" height="26" alt="camera icon missing" />
             </button>
 
-            <button mat-icon-button matTooltip="Camera ">
+            <button mat-icon-button matTooltip="Camera " *ngIf="videoFlag" (click)="toggleLocalVideo()">
                 <img src="../../../assets/images/camera.svg" width="26" height="26" alt="camera icon missing" />
             </button>
-            <button mat-icon-button matTooltip="Camera On">
+            <button mat-icon-button matTooltip="Camera On" *ngIf="!videoFlag" (click)="toggleLocalVideo()">
                 <img src="../../../assets/images/no_camera.svg" width="26" height="26" alt="camera icon missing" />
             </button>
 
-            <button mat-icon-button class="end-call" matTooltip="End Call">
+            <button mat-icon-button class="end-call" (click)="endCall()" matTooltip="End Call">
                 <img src="../../../assets/images/end_call2.svg" width="26" height="26" alt="microphone icon missing" />
                 <span class="leave">Leave</span>
             </button>

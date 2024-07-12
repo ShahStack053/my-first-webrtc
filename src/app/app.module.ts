@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { MeetingBodyComponent } from './components/shared-components/meeting-body/meeting-body.component';
-import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 const rtcConfig: RTCConfig = {
   AppID: '1',
@@ -21,9 +21,8 @@ const rtcConfig: RTCConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    RtcLibModule.forRoot(rtcConfig)
-
+    RtcLibModule.forRoot(rtcConfig),
+    MatIconModule
   ],
   providers: [RTCLibService],
   bootstrap: [AppComponent]
