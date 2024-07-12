@@ -1,0 +1,47 @@
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    header {
+        background-color: transparent;
+        opacity: 0.9;
+        background-image: linear-gradient(0deg, #ededf1 0%, #8c8e8f 100%);
+        color: white;
+        padding: 10px;
+        height: 80px;
+
+        .logo-img {
+            width: 8%;
+            height: 100%;
+            min-width: 150px;
+        }
+    }
+
+    .main-div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .meet-btn {
+            border: none;
+            background: #e5141c;
+            color: white;
+            scale: 0.97;
+            border-radius: 30px;
+            padding-inline: 15px;
+            height: 40px;
+            cursor: pointer;
+            width: 150px;
+            font-size: 17px;
+        }
+
+        .meet-btn:hover {
+            scale: 1;
+        }
+    }
+
+}
