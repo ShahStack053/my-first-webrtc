@@ -21,6 +21,20 @@
                 <img src="../../../assets/images/mute.svg" width="26" height="26" alt="camera icon missing" />
             </button>
 
+            <button mat-icon-button matTooltip="Start Recording" *ngIf="!recordingService.recording"
+                (click)="toggleRecording()">
+                <mat-icon class="material-symbols-outlined record">
+                    fiber_manual_record
+                </mat-icon>
+            </button>
+            <button class="off" mat-icon-button matTooltip="Stop Recording" *ngIf="recordingService.recording"
+                mat-icon-button (click)="toggleRecording()">
+                <mat-icon class="material-symbols-outlined record">
+                    stop
+                </mat-icon>
+            </button>
+
+
             <button mat-icon-button matTooltip="Camera " *ngIf="videoFlag" (click)="toggleLocalVideo()">
                 <img src="../../../assets/images/camera.svg" width="26" height="26" alt="camera icon missing" />
             </button>

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { MeetingBodyComponent } from './components/shared-components/meeting-body/meeting-body.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const rtcConfig: RTCConfig = {
   AppID: '1',
@@ -22,7 +23,8 @@ const rtcConfig: RTCConfig = {
     BrowserModule,
     AppRoutingModule,
     RtcLibModule.forRoot(rtcConfig),
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [RTCLibService],
   bootstrap: [AppComponent]

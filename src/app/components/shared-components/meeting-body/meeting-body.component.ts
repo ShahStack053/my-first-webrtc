@@ -8,6 +8,7 @@ import {
 } from 'rtc-lib';
 import { ActivatedRoute, Router } from '@angular/router';
 import initLayoutContainer from 'opentok-layout-js';
+import { RecordingService } from '../../../service/recording.service';
 
 
 @Component({
@@ -17,8 +18,9 @@ import initLayoutContainer from 'opentok-layout-js';
 })
 
 export class MeetingBodyComponent {
+  recordingControl = false
   audioFlag = true;
-  videoFlag = false;
+  videoFlag = true;
   layout: any;
   remote: any;
   roomId: any;
@@ -53,7 +55,8 @@ export class MeetingBodyComponent {
     this.rtcLibService.leaveRoom(this.rtcLibService.room);
   }
 
-  constructor(private rtcLibService: RTCLibService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private rtcLibService: RTCLibService, private activatedRoute: ActivatedRoute, private router: Router, public recordingService: RecordingService
+  ) {
     this.remote = this.rtcLibService.remoteCalls;
 
   }
@@ -147,6 +150,9 @@ export class MeetingBodyComponent {
   }
 
   endCall() {
+    if (this.recordingService.recording) {
+      this.toggleRecording(true);
+    }
     this.rtcLibService.closeStream();
     this.rtcLibService.leaveRoom(this.rtcLibService.room);
     this.router.navigate([''])
@@ -156,9 +162,23 @@ export class MeetingBodyComponent {
     this.audioFlag = !this.audioFlag;
     this.rtcLibService.setAudio(this.audioFlag);
   }
+
   async toggleLocalVideo() {
     this.videoFlag = !this.videoFlag;
     this.rtcLibService.setVideo(this.videoFlag);
+  }
+
+  async toggleRecording(ending = false) {
+    this.recordingService.recording = !this.recordingService.recording
+
+    if (this.recordingService.recording) {
+      this.recordingService.startRecordingMeeting();
+    } else {
+      if (ending) {
+        this.recordingService.stopRecordingMeeting(true);
+      }
+      this.recordingService.stopRecordingMeeting();
+    }
   }
 }
 
